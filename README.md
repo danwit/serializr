@@ -296,9 +296,9 @@ The context object is an advanced feature and can be used to obtain additional c
 
 1.  first argument of factory functions
 2.  third argument of the lookup callback of `ref` prop schema's (see below)
-3.  third argument of the `deserializer` of a custom propSchema
+3.  second argument of the `deserializer` of a custom propSchema
 
-When deserializing a model elememt / property, the following fields are available on the context object:
+When deserializing a model element / property, the following fields are available on the context object:
 
 -   `json`: Returns the complete current json object that is being deserialized
 -   `target`: The object currently being deserialized. This is the object that is returned from the factory function.
@@ -730,7 +730,7 @@ When using typescript, the decorator can also be used on fields declared as cons
 ```ts
 class Todo {
     @serializable(primitive())
-    title // shorthand for primitves
+    title // shorthand for primitives
 
     @serializable
     done
@@ -797,7 +797,8 @@ Sets the default model schema for class / constructor function. Everywhere where
 
 When passing an instance of this class to `serialize`, it is not required to pass the model schema as first argument anymore, because the default schema will be inferred from the instance type.
 
-### _function_ `update`&lt;T&gt;(_modelschema_: [ClazzOrModelSchema](#type-clazzormodelschemat--modelschemat--clazzt-src)&lt;T&gt;, _instance_: T, _json_: any, _callback_?: undefined | ((_err_: any, _result_: T) => void), _customArgs_?: any): void <sub><a href="src/core/update.ts#L23">src</a></sub>
+### _function_ `update`&lt;T&gt;(_modelschema_: [ClazzOrModelSchema](#type-clazzormodelschemat--modelschemat--clazzt-src)&lt;T&gt;, _instance_: T, _json_: any, _callback_?: undefined | ((_err_: any, _result_: T) => void), _
+Args_?: any): void <sub><a href="src/core/update.ts#L23">src</a></sub>
 
 Similar to deserialize, but updates an existing object instance. Properties will always updated entirely, but properties not present in the json will be kept as is. Further this method behaves similar to deserialize.
 
